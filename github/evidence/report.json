@@ -1,0 +1,31 @@
+{
+  "base_url": "https://demo.cyclos.org/ui/login",
+  "executed_at_local": "2026-05-10 11:00:00",
+  "artifacts_dir": "target/screenshots",
+  "steps": [
+    {
+      "name": "01_open_login_page",
+      "ok": true,
+      "current_url": "https://demo.cyclos.org/ui/login",
+      "title": "Cyclos"
+    },
+    {
+      "name": "02_login_demo_1234",
+      "ok": true,
+      "current_url": "https://demo.cyclos.org/ui/",
+      "title": "Cyclos"
+    },
+    {
+      "name": "03_verify_dashboard",
+      "ok": true,
+      "current_url": "https://demo.cyclos.org/ui/",
+      "title": "Cyclos"
+    },
+    {
+      "name": "04_logout",
+      "ok": true,
+      "current_url": "https://demo.cyclos.org/ui/login",
+      "title": "Cyclos"
+    }
+  ]
+}

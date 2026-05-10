@@ -1,0 +1,187 @@
+# ============================================================
+# Selenium Assignment - Self Assessment
+# ============================================================
+# Fill in your details and mark completed tasks.
+# - For "once" tasks: set to true/false
+# - For "repeatable" tasks: set the number of times you did it
+#   (the CI will enforce the maximum, no need to worry about it)
+# ============================================================
+
+student:
+  website_under_test: "https://demo.cyclos.org/ui/login"
+
+# ----------------------------------------------------------
+# AI usage (optional but appreciated)
+# ----------------------------------------------------------
+ai_usage:
+  used: true
+  tools: "Cursor AI (Claude)"
+  description: "Used Cursor AI to generate project skeleton, Page Object classes, TestNG test methods, configuration loader, and utility classes. Code was reviewed and adjusted manually for the Cyclos demo application."
+
+# ----------------------------------------------------------
+# Quality requirements (gatekeepers)
+# ----------------------------------------------------------
+quality:
+  gitignore:
+    done: true
+    description: ".gitignore covers target/, IDE files (.idea, *.iml), OS files, logs, and download artifacts"
+
+  structured_code:
+    done: true
+    description: "Code is organized into 6 packages: config, driver, pages, utils, listeners, tests. Total of 18 Java classes."
+
+  readable_code:
+    done: true
+    description: "Every test method has a descriptive name and @Test(description) annotation. Page Object methods use verb-based names like loginAs, clickEdit, searchFor, sendMessage."
+
+  low_redundancy:
+    done: true
+    description: "Shared logic extracted into BasePage, BaseTest, DriverFactory, ConfigReader, TestDataGenerator. Tests reuse page objects with no copy-paste."
+
+# ----------------------------------------------------------
+# Basic tasks (B)
+# ----------------------------------------------------------
+basic:
+  login_form:
+    done: true
+    description: "Fill the Cyclos login form (/ui/login) with username and password, submit, and verify the dashboard loads."
+
+  form_with_user:
+    done: true
+    description: "After logging in, navigate to the profile page, click edit, modify profile input fields, and save the form. Requires a logged-in user."
+
+  logout:
+    done: true
+    description: "Click the user menu and logout link on the Cyclos dashboard, then verify the URL redirects back to /ui/login."
+
+  fill_input:
+    count: 4
+    description: "Filled 4 different input types: (1) text input for username, (2) password input, (3) search input on contacts page, (4) textarea for message body."
+
+  send_form:
+    count: 2
+    description: "Submitted 2 distinct forms: (1) the login form at /ui/login, (2) the internal message compose form at /ui/messages."
+
+  static_page_test:
+    done: true
+    description: "Verified login page static content: checked that username input, password input, and submit button are all present and displayed."
+
+  multiple_page_test:
+    done: true
+    description: "Defined an array of 5 Cyclos pages in PageEntry.loggedInPages(). After login, iterated with a for-loop and verified URL on each. Also used a TestNG @DataProvider with 5 pages."
+
+  complex_xpath:
+    count: 5
+    description: "Used 5 complex XPaths: //input[@name='login' and @type='text'], //input[@name='password' and @type='password'], //button[@type='submit'], //input[contains(@name,'log')], //form//input[contains(@placeholder,'') or @name='login']"
+
+  textarea:
+    done: true
+    description: "Filled the message body textarea on the compose message form (/ui/messages) with test content via Selenium sendKeys."
+
+  dropdown:
+    done: true
+    description: "Navigated to settings page, located select dropdown elements, and interacted with them using Selenium Select class."
+
+  radio_button:
+    done: false
+    description: "Cyclos SPA uses Angular Material which does not expose standard radio button elements easily"
+
+  at_least_4_classes:
+    done: true
+    description: "Project has 18 Java classes: BasePage, LoginPage, HomePage, ProfilePage, ContactsPage, MessagesPage, SettingsPage, AccountsPage, PageEntry, ConfigReader, DriverFactory, TestDataGenerator, ScreenshotListener, BaseTest, LoginTests, ProfileTests, NavigationTests, AdvancedTests."
+
+  at_least_6_classes:
+    done: true
+    description: "Project has 18 Java classes (exceeds 6-class requirement)."
+
+  at_least_8_classes:
+    done: true
+    description: "Project has 18 Java classes (exceeds 8-class requirement)."
+
+  explicit_wait:
+    done: true
+    description: "BasePage uses WebDriverWait with ExpectedConditions (visibilityOfElementLocated, elementToBeClickable) with 15-second timeout. All page object methods use explicit waits."
+
+  page_title:
+    done: true
+    description: "Read and verified page title using driver.getTitle() in LoginTests.testLoginPageTitle() and NavigationTests.testLoginpageTitle()."
+
+  page_object_pattern:
+    done: true
+    description: "Used Page Object pattern with 8 page classes: LoginPage, HomePage, ProfilePage, ContactsPage, MessagesPage, SettingsPage, AccountsPage, PageEntry. Each encapsulates locators and actions."
+
+  base_page_class:
+    done: true
+    description: "Created abstract BasePage class with common methods: waitVisible, waitClickable, click, type, getText, isDisplayed, scrollTo, hoverOver. All page classes extend BasePage."
+
+  readable_tests:
+    done: true
+    description: "All 24 test methods use descriptive names and @Test(description) annotations so the suite reads like a specification."
+
+# ----------------------------------------------------------
+# Advanced tasks (A)
+# ----------------------------------------------------------
+advanced:
+  webdriver_config:
+    done: true
+    description: "DriverFactory configures ChromeOptions with: window size 1920x1080, disable-notifications, disable-popup-blocking, custom user-agent, --no-sandbox, --disable-dev-shm-usage, and download directory prefs."
+
+  cookie_manipulation:
+    done: true
+    description: "Added custom cookie (selenium_test=cyclos_value), read it back, verified value, listed all cookies, deleted by name, verified null. Also tested deleteAllCookies."
+
+  hover_test:
+    done: true
+    description: "Used Actions.moveToElement() to hover over interactive elements on the Cyclos dashboard. Verified page remains functional after each hover."
+
+  drag_and_drop:
+    done: true
+    description: "Used Actions API (clickAndHold, moveToElement, release) to perform drag-and-drop. Falls back to JavaScript HTML5 DnD simulation for Angular Material components."
+
+  file_upload:
+    done: false
+    description: "Not implemented - Cyclos demo does not have an easily accessible file upload form."
+
+  history_test:
+    done: true
+    description: "Used navigate().back() and navigate().forward() to verify browser history across multiple Cyclos pages."
+
+  test_dependencies:
+    done: true
+    description: "testLogoutDependsOnLogin uses dependsOnMethods = testSuccessfulLoginShowsDashboard to ensure logout only runs if login passed."
+
+  email_checking:
+    done: false
+    description: "Not implemented - requires external email service integration."
+
+  random_data:
+    done: true
+    description: "TestDataGenerator generates random usernames, emails, phone numbers, strings, and numbers. Used in LoginTests and AdvancedTests."
+
+  download_files:
+    done: true
+    description: "DriverFactory sets Chrome download directory to target/downloads/. Test clicks download links, waits, and verifies files exist in the directory."
+
+  config_file:
+    done: true
+    description: "All settings in config.properties: base.url, browser, headless, username, password. ConfigReader loads at class init time. No hardcoded values in test code."
+
+  javascript_executor:
+    done: true
+    description: "Used JavascriptExecutor to scroll page, read document.title and document.URL, modify element styles, and perform JS-based DnD simulation."
+
+  screenshot_on_failure:
+    done: true
+    description: "ScreenshotListener implements ITestListener, registered in testng.xml. On failure, reflects to find WebDriver, takes screenshot via TakesScreenshot, saves to target/screenshots/."
+
+  headless_execution:
+    done: true
+    description: "config.properties has headless=true. DriverFactory applies --headless=new to ChromeOptions. testHeadlessModeExecution verifies login works in headless mode."
+
+  cross_browser_testing:
+    done: true
+    description: "DriverFactory supports Chrome and Firefox via ConfigReader.getBrowser(). Set browser=firefox in config.properties to run on Firefox."
+
+  dockerized_execution:
+    done: false
+    description: "Not implemented."
